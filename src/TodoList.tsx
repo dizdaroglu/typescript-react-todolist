@@ -1,18 +1,27 @@
-import React from 'react';
+import React, { Fragment } from 'react';
 import { TodoListItem } from './TodoListItem';
 
 interface TodoListProps {
   todos: Array<ITodo>;
   toggleTodo: ToggleTodo;
+  removeTodo: RemoveTodo;
 }
-export const TodoList: React.FC<TodoListProps> = ({ todos, toggleTodo }) => {
+export const TodoList: React.FC<TodoListProps> = ({
+  todos,
+  toggleTodo,
+  removeTodo
+}) => {
   return (
     <ul>
-      {todos.map(todo => {
-        return (
-          <TodoListItem key={todo.text} todo={todo} toggleTodo={toggleTodo} />
-        );
-      })}
+      {todos.map((todo, index: number) => (
+        <TodoListItem
+          key={index}
+          index={index}
+          todo={todo}
+          toggleTodo={toggleTodo}
+          removeTodo={removeTodo}
+        />
+      ))}
     </ul>
   );
 };

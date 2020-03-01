@@ -21,11 +21,16 @@ const App: React.FC = () => {
     });
     setTodos(newTodos);
   };
+  const removeTodo: RemoveTodo = index => {
+    const newTodos: ITodo[] = [...todos];
+    newTodos.splice(index, 1);
+    setTodos(newTodos);
+  };
   console.log(todos);
   return (
     <>
       <AddTodoForm addTodo={addTodo} />
-      <TodoList todos={todos} toggleTodo={toggleTodo} />
+      <TodoList todos={todos} toggleTodo={toggleTodo} removeTodo={removeTodo} />
     </>
   );
 };
